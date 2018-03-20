@@ -26,4 +26,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <br/>
 <br/>
 <a href="https://insights.hotjar.com/sites/764913/dashboard">go to hotjar dashboard</a>
+<br/>
+<br/>
+<button type="button" id="button_create">Create</button>
+<button type="button" id="button_remove">Remove</button>
+<br/>
+<span id="localStorage_value"></span>
+
+<script>
+window.onload = function() {
+ localStorage_value = document.getElementById('localStorage_value');
+ button_create = document.getElementById('button_create');
+ button_remove = document.getElementById('button_remove');
+ localStorage_value.textContent=localStorage.getItem('name');
+ button_create.onclick = function() { 
+  localStorage.setItem('name','Brando'); 
+  localStorage_value.textContent=localStorage.getItem('name');
+ };
+ button_create.onclick = function() { 
+  localStorage.removeItem('name'); 
+  localStorage_value.textContent=localStorage.getItem('name');
+ };
+};
+ 
+</script>
+
 </body>

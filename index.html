@@ -15,6 +15,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <h1>mbrando ::= home</h2>
 <a href="./product-search.html">go to search page</a>
+<a href="./vivocha.html">go to vivocha chat for customers</a>
 <p>Highlighted Products</p>
 <ul>
 <li><a href="./product-page-01.html">go to product 01</a></li>
@@ -31,24 +32,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <button type="button" id="button_create">Create</button>
 <button type="button" id="button_remove">Remove</button>
 <br/>
-<span id="localStorage_value"></span>
+<span id="localStorage_value"></span>(<span id="localStorage_lastsave"></span>)
 
 <script>
 window.onload = function() {
  localStorage_value = document.getElementById('localStorage_value');
+ localStorage_lastsave = document.getElementById('localStorage_lastsave');
  button_create = document.getElementById('button_create');
  button_remove = document.getElementById('button_remove');
  localStorage_value.textContent=localStorage.getItem('name');
- button_create.onclick = function() { 
+ localStorage_lastsave.textContent=localStorage.getItem('lastsave');
+
+ button_create.addEventListener('click', function() {
+  var currentdate = new Date(); 
+  var datetime = ""+currentdate;
+  var datetime2 =  ""+currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
   localStorage.setItem('name','Brando'); 
+  localStorage.setItem('lastsave',datetime); 
   localStorage_value.textContent=localStorage.getItem('name');
- };
- button_create.onclick = function() { 
+  localStorage_lastsave.textContent=localStorage.getItem('lastsave');
+  //alert(localStorage.getItem('name'));
+ });
+ button_remove.addEventListener('click', function() {
   localStorage.removeItem('name'); 
+  localStorage.removeItem('lastsave'); 
   localStorage_value.textContent=localStorage.getItem('name');
- };
+  localStorage_lastsave.textContent=localStorage.getItem('lastsave');
+  //alert(localStorage.getItem('name'));
+ });
 };
- 
 </script>
 
 </body>
